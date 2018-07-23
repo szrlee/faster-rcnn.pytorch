@@ -58,7 +58,7 @@ def parse_args():
                       default=10000, type=int)
 
   parser.add_argument('--save_dir', dest='save_dir',
-                      help='directory to save models', default="/srv/share/jyang375/models",
+                      help='directory to save models', default="./models",
                       type=str)
   parser.add_argument('--nw', dest='num_workers',
                       help='number of worker to load data',
@@ -323,7 +323,7 @@ if __name__ == '__main__':
 
       loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
            + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
-      loss_temp += loss.data[0]
+      loss_temp += loss.item()
 
       # backward
       optimizer.zero_grad()
@@ -345,10 +345,10 @@ if __name__ == '__main__':
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
         else:
-          loss_rpn_cls = rpn_loss_cls.data[0]
-          loss_rpn_box = rpn_loss_box.data[0]
-          loss_rcnn_cls = RCNN_loss_cls.data[0]
-          loss_rcnn_box = RCNN_loss_bbox.data[0]
+          loss_rpn_cls = rpn_loss_cls.item()
+          loss_rpn_box = rpn_loss_box.item()
+          loss_rcnn_cls = RCNN_loss_cls.item()
+          loss_rcnn_box = RCNN_loss_bbox.item()
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
 
