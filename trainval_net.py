@@ -325,6 +325,10 @@ if __name__ == '__main__':
     checkpoint = torch.load(load_name)
     fasterRCNN.load_state_dict(checkpoint['model'])
     optimizer.load_state_dict(checkpoint['optimizer'])
+    for state in optimizer.state.values():
+        for k, v in state.items():
+            if isinstance(v, torch.FloatTensor):
+                state[k] = v.cuda()
     print("loaded pretrained faster rcnn model %s" % (load_name))
 
   if args.mGPUs:
