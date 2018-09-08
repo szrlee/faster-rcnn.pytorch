@@ -120,8 +120,8 @@ def parse_args():
   parser.add_argument('--dt', dest='dt',
                       help='domain transfer or not',
                       default=False, type=bool)
-  parser.add_argument('--pretrained_model', dest='pretrained_model',
-                      help='pretrained model', default="data/pretrained_model/vgg16_caffe.pth",
+  parser.add_argument('--pretrained_rcnn', dest='pretrained_rcnn',
+                      help='pretrained RCNN model', default="data/pretrained_model/vgg16_caffe.pth",
                       type=str)
 
 
@@ -320,12 +320,12 @@ if __name__ == '__main__':
 
   # domain transfer
   if args.dt:
-    load_name = args.pretrained_model
-    print("loading pretrained model %s" % (load_name))
+    load_name = args.pretrained_rcnn
+    print("loading pretrained faster rcnn model %s" % (load_name))
     checkpoint = torch.load(load_name)
     fasterRCNN.load_state_dict(checkpoint['model'])
     optimizer.load_state_dict(checkpoint['optimizer'])
-    print("loaded pretrained model %s" % (load_name))
+    print("loaded pretrained faster rcnn model %s" % (load_name))
 
   if args.mGPUs:
     fasterRCNN = nn.DataParallel(fasterRCNN)
