@@ -25,14 +25,13 @@ for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:
     for domain in ['clipart', 'comic', 'watercolor']:
       name = 'voc_{}_{}_{}'.format(domain, year, split)
-      __sets[name] = (lambda domain=domain, split=split, year=year: \
-        pascal_voc(split, year, os.path.join(cfg.DATA_DIR, 'cross-domain/dt_' + domain)))
+      __sets[name] = (lambda domain=domain, split=split, year=year: pascal_voc(split, year, domain))
 
 # Set up voc_<year>_<split>
 for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:
     name = 'voc_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year, 'origin'))
 
 # Set up coco_2014_<split>
 for year in ['2014']:

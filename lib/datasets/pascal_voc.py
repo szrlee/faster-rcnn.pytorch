@@ -38,11 +38,12 @@ except NameError:
 
 
 class pascal_voc(imdb):
-    def __init__(self, image_set, year, devkit_path=None):
-        imdb.__init__(self, 'voc_' + year + '_' + image_set)
+    def __init__(self, image_set, year, domain='origin', devkit_path=None):
+        imdb.__init__(self, 'voc_' + year + '_' + image_set + '_' + domain)
         self._year = year
         self._image_set = image_set
-        self._devkit_path = self._get_default_path() if devkit_path is None \
+        self._domain = domain
+        self._devkit_path = self._get_default_path(domain) if devkit_path is None \
             else devkit_path
         self._data_path = os.path.join(self._devkit_path, 'VOC' + self._year)
         self._classes = ('__background__',  # always index 0
@@ -109,11 +110,14 @@ class pascal_voc(imdb):
             image_index = [x.strip() for x in f.readlines()]
         return image_index
 
-    def _get_default_path(self):
+    def _get_default_path(self, domain):
         """
         Return the default path where PASCAL VOC is expected to be installed.
         """
-        return os.path.join(cfg.DATA_DIR, 'VOCdevkit' + self._year)
+        if domain == 'origin':
+            return os.path.join(cfg.DATA_DIR, 'VOCdevkit' + self._year)
+        else:
+            return os.path.join(cfg.DATA_DIR, 'cross-domain/dt_' + domain)
 
     def gt_roidb(self):
         """
