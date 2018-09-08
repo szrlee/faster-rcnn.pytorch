@@ -18,6 +18,16 @@ from datasets.vg import vg
 
 import numpy as np
 
+# Set up Domain Transfered voc_<domain>_<year>_<split>
+from model.utils.config import cfg
+import os
+for year in ['2007', '2012']:
+  for split in ['train', 'val', 'trainval', 'test']:
+    for domain in ['clipart', 'comic', 'watercolor']:
+      name = 'voc_{}_{}_{}'.format(domain, year, split)
+      __sets[name] = (lambda domain=domain, split=split, year=year: \
+        pascal_voc(split, year, os.path.join(cfg.DATA_DIR, 'cross-domain/dt_' + domain)))
+
 # Set up voc_<year>_<split>
 for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:

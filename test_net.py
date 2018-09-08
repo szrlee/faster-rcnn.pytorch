@@ -124,6 +124,33 @@ if __name__ == '__main__':
       args.imdb_name = "vg_150-50-50_minitrain"
       args.imdbval_name = "vg_150-50-50_minival"
       args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
+  # domain transfer VOC 07
+  elif args.dataset == "pascal_voc_clipart_07":
+      args.imdb_name = "voc_clipart_2007_train"
+      args.imdbval_name = "voc_clipart_2007_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "pascal_voc_comic_0712":
+      args.imdb_name = "voc_comic_2007_train"
+      args.imdbval_name = "voc_comic_2007_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "pascal_voc_watercolor_0712":
+      args.imdb_name = "voc_watercolor_2007_train"
+      args.imdbval_name = "voc_watercolor_2007_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  # domain transfer VOC 0712
+  elif args.dataset == "pascal_voc_clipart_0712":
+      args.imdb_name = "voc_clipart_2007_train+voc_clipart_2012_train"
+      args.imdbval_name = "voc_clipart_2007_val+voc_clipart_2012_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "pascal_voc_comic_0712":
+      args.imdb_name = "voc_comic_2007_train+voc_comic_2012_train"
+      args.imdbval_name = "voc_comic_2007_val+voc_comic_2012_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "pascal_voc_watercolor_0712":
+      args.imdb_name = "voc_watercolor_2007_train+voc_watercolor_2012_train"
+      args.imdbval_name = "voc_watercolor_2007_val+voc_watercolor_2012_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
 
   args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
