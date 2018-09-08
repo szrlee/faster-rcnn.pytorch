@@ -116,6 +116,15 @@ def parse_args():
                       help='whether use tensorboard',
                       action='store_true')
 
+# domain transfer
+  parser.add_argument('--dt', dest='dt',
+                      help='domain transfer or not',
+                      default=False, type=bool)
+  parser.add_argument('--pretrained_model', dest='pretrained_model',
+                      help='pretrained model', default="data/pretrained_model/vgg16_caffe.pth",
+                      type=str)
+
+
   args = parser.parse_args()
   return args
 
@@ -308,6 +317,15 @@ if __name__ == '__main__':
     if 'pooling_mode' in checkpoint.keys():
       cfg.POOLING_MODE = checkpoint['pooling_mode']
     print("loaded checkpoint %s" % (load_name))
+
+  # domain transfer
+  if args.dt:
+    load_name = args.pretrained_model
+    print("loading pretrained model %s" % (load_name))
+    checkpoint = torch.load(load_name)
+    fasterRCNN.load_state_dict(checkpoint['model'])
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    print("loaded pretrained model %s" % (load_name))
 
   if args.mGPUs:
     fasterRCNN = nn.DataParallel(fasterRCNN)
