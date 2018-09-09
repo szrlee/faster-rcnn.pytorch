@@ -129,11 +129,11 @@ if __name__ == '__main__':
       args.imdb_name = "voc_clipart_2007_train"
       args.imdbval_name = "voc_clipart_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-  elif args.dataset == "pascal_voc_comic_0712":
+  elif args.dataset == "pascal_voc_comic_07":
       args.imdb_name = "voc_comic_2007_train"
       args.imdbval_name = "voc_comic_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-  elif args.dataset == "pascal_voc_watercolor_0712":
+  elif args.dataset == "pascal_voc_watercolor_07":
       args.imdb_name = "voc_watercolor_2007_train"
       args.imdbval_name = "voc_watercolor_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
