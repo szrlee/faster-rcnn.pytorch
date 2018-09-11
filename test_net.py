@@ -139,16 +139,29 @@ if __name__ == '__main__':
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
   # domain transfer VOC 0712
   elif args.dataset == "pascal_voc_clipart_0712":
-      args.imdb_name = "voc_clipart_2007_train+voc_clipart_2012_train"
-      args.imdbval_name = "voc_clipart_2007_val+voc_clipart_2012_val"
+      args.imdb_name = "voc_clipart_2007_train+voc_clipart_2012_trainval"
+      args.imdbval_name = "voc_clipart_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
   elif args.dataset == "pascal_voc_comic_0712":
-      args.imdb_name = "voc_comic_2007_train+voc_comic_2012_train"
-      args.imdbval_name = "voc_comic_2007_val+voc_comic_2012_val"
+      args.imdb_name = "voc_comic_2007_train+voc_comic_2012_trainval"
+      args.imdbval_name = "voc_comic_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
   elif args.dataset == "pascal_voc_watercolor_0712":
-      args.imdb_name = "voc_watercolor_2007_train+voc_watercolor_2012_train"
-      args.imdbval_name = "voc_watercolor_2007_val+voc_watercolor_2012_val"
+      args.imdb_name = "voc_watercolor_2007_train+voc_watercolor_2012_trainval"
+      args.imdbval_name = "voc_watercolor_2007_val"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  # target domain
+  elif args.dataset == "clipart":
+      args.imdb_name = "clipart_train"
+      args.imdbval_name = "clipart_test"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "comic":
+      args.imdb_name = "comic_train"
+      args.imdbval_name = "comic_test"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "watercolor":
+      args.imdb_name = "watercolor_train"
+      args.imdbval_name = "watercolor_test"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
 
 
