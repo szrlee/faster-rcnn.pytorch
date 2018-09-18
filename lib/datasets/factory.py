@@ -12,11 +12,21 @@ from __future__ import print_function
 
 __sets = {}
 from datasets.pascal_voc import pascal_voc
+from datesets.target_domain import target_domain
 from datasets.coco import coco
 from datasets.imagenet import imagenet
 from datasets.vg import vg
 
 import numpy as np
+
+
+# Temporary Set up Target Domain <domain>_<split>
+from model.utils.config import cfg
+import os
+for split in ['train', 'test']:
+  for domain in ['clipart', 'comic', 'watercolor']:
+    name = '{}_{}'.format(domain, split)
+    __sets[name] = (lambda domain=domain, split=split: target_domain(split, domain))
 
 # Set up Domain Transfered voc_<domain>_<year>_<split>
 from model.utils.config import cfg
