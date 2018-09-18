@@ -215,6 +215,8 @@ if __name__ == '__main__':
 
   fasterRCNN.create_architecture()
 
+  if args.dt:
+      print("pretrained rcnn")
   print("load checkpoint %s" % (load_name))
   checkpoint = torch.load(load_name)
   fasterRCNN.load_state_dict(checkpoint['model'])

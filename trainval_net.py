@@ -209,6 +209,19 @@ if __name__ == '__main__':
       args.imdb_name = "voc_watercolor_2007_train+voc_watercolor_2012_trainval"
       args.imdbval_name = "voc_watercolor_2007_val"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  # target domain
+  elif args.dataset == "clipart":
+      args.imdb_name = "clipart_train"
+      args.imdbval_name = "clipart_test"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "comic":
+      args.imdb_name = "comic_train"
+      args.imdbval_name = "comic_test"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  elif args.dataset == "watercolor":
+      args.imdb_name = "watercolor_train"
+      args.imdbval_name = "watercolor_test"
+      args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
 
   args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
