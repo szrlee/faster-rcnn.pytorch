@@ -3,6 +3,12 @@ log/*
 models/*
 output/*
 
+## Training and testing script
+train*.sh
+test*.sh
+train.sh
+test.sh
+
 # READ THIS BEFORE YOU REFACTOR ME
 #
 # setup.py uses the list of patterns in this file to decide
