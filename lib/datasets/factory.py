@@ -12,7 +12,7 @@ from __future__ import print_function
 
 __sets = {}
 from datasets.pascal_voc import pascal_voc
-from datesets.target_domain import target_domain
+from datasets.target_domain import target_domain
 from datasets.coco import coco
 from datasets.imagenet import imagenet
 from datasets.vg import vg
