@@ -86,6 +86,16 @@ def parse_args():
   parser.add_argument('--vis', dest='vis',
                       help='visualization mode',
                       action='store_true')
+
+# domain transfer
+  parser.add_argument('--dt', dest='dt',
+                      help='domain transfer or not',
+                      default=False, type=bool)
+  parser.add_argument('--pretrained_rcnn', dest='pretrained_rcnn',
+                      help='pretrained RCNN model', default=None,
+                      type=str)
+
+
   args = parser.parse_args()
   return args
 
@@ -181,11 +191,14 @@ if __name__ == '__main__':
 
   print('{:d} roidb entries'.format(len(roidb)))
 
-  input_dir = args.load_dir + "/" + args.net + "/" + args.dataset
-  if not os.path.exists(input_dir):
-    raise Exception('There is no input directory for loading network from ' + input_dir)
-  load_name = os.path.join(input_dir,
-    'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+  if args.dt:
+    load_name = args.pretrained_rcnn
+  else:
+    input_dir = args.load_dir + "/" + args.net + "/" + args.dataset
+    if not os.path.exists(input_dir):
+      raise Exception('There is no input directory for loading network from ' + input_dir)
+    load_name = os.path.join(input_dir,
+      'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
 
   # initilize the network here.
   if args.net == 'vgg16':

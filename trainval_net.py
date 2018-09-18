@@ -121,7 +121,7 @@ def parse_args():
                       help='domain transfer or not',
                       default=False, type=bool)
   parser.add_argument('--pretrained_rcnn', dest='pretrained_rcnn',
-                      help='pretrained RCNN model', default="data/pretrained_model/vgg16_caffe.pth",
+                      help='pretrained RCNN model', default=None,
                       type=str)
 
 
